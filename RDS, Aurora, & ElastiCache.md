@@ -48,11 +48,18 @@ Multi AZ - Disaster Recovery:
 1. It is a SYNC replication between the Master DB and replica.
 2. one DNS name is used, it is passed on to the replica incase of failover.
 3. Increased availability 
+4. No intervention required 
+5. Not used for scale just a stand by
 
 
+Note: Read Replicas can be setup as Multi AZ for Disaster Recovery. 
 
 
+Single - AZ to Multi - AZ
 
+1. Zero downtime operation 
+2. A snapshot is taken and restored in a new AZ 
+3. Synchronized replication is established between the stand by and the RDS DB instance.
 
 
 
