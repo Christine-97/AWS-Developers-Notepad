@@ -60,23 +60,3 @@ Single - AZ to Multi - AZ
 1. Zero downtime operation 
 2. A snapshot is taken and restored in a new AZ 
 3. Synchronized replication is established between the stand by and the RDS DB instance.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
