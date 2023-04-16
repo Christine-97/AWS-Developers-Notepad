@@ -129,12 +129,30 @@ V. GEOLOCATION
   A default location can be set for underfined traffic.
   Health checks can be done 
   Use case:  Restricted content distribution, website localization 
-   
-    
-    
 
 VI. MULTI-VALUE ANSWER
+
+
 VII. GEOPROXIMITY ( Using Route 53 traffic flow feature)
+  Allows you ti route traffic to your resources based on location of the user and the resources
+  There is a number called Bias, used to shift the traffic to resources based on specific location  
+  To change the size of geographic region you can specify the bias values:
+    To expand (1 to 99) - more traffic to resource
+    To shrink (-1 to - 99) - less traffic to resource
+  Resources can be own resources (on premises) hence the latitude and longitude has to be specified 
+  For AWS Resources AWS regions has to be specified  
+  Use case : To shift traffic from one region to another.
+
+
+<h2> Features  </h2>
+
+Traffic flow:
+
+It is used to simplify the process of creating and maintaining records in large and complex configurations 
+This is a visual editor to manage complex routing decision 
+These configurations can be saved as Traffic Flow Policy 
+this can be applied to different hosted zones  ( different domain names )
+and it supports versioning
 
 
 
