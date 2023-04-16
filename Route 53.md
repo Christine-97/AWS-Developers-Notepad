@@ -85,10 +85,11 @@ TTL will be set by Route 53.
 EC2 DNS name cannot be a target to a ALIAS record
 
 
+Routing Policy
 
-
-
-
+I. SIMPLE 
+II. WEIGHTED 
+III. LATENCY
 
 
 
