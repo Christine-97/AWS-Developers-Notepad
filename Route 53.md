@@ -185,20 +185,3 @@ II. Calculated Health Checks (Health checks to check other health checks):
 III. CloudWatch metric with assigned CloudWatch Alarms:
   a. Used to manitor Private resources (as private endpoints cant be accessed)
   b. Create a Cloud watch metric and create a cloud watch alarms that is assigned into the Health checker
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
