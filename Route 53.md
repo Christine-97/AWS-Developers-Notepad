@@ -130,9 +130,13 @@ V. GEOLOCATION
   Health checks can be done 
   Use case:  Restricted content distribution, website localization 
 
-VI. MULTI-VALUE ANSWER
-
-
+VI. MULTI-VALUE
+  Route traffic to multiple resources.
+  Route 53 return multiple values/ resources.
+  Health checks are used return only healthy resources as value.
+  You can return up to 8 health check records for each multi-value query
+  It is not a substitute for ELB ( client side load balancing ) 
+  
 VII. GEOPROXIMITY ( Using Route 53 traffic flow feature)
   Allows you ti route traffic to your resources based on location of the user and the resources
   There is a number called Bias, used to shift the traffic to resources based on specific location  
@@ -143,7 +147,11 @@ VII. GEOPROXIMITY ( Using Route 53 traffic flow feature)
   For AWS Resources AWS regions has to be specified  
   Use case : To shift traffic from one region to another.
 
-
+VIII. IP-based 
+  Routing is based on clients' IP addresses
+  User-IP-to-endpoint mappings - list of CIDRs for your clients and the corresponding endpoints/locations   are mapped.
+  Use cases: Optimized performance, reduced network costs
+  
 <h2> Features  </h2>
 
 Traffic flow:
@@ -153,9 +161,6 @@ This is a visual editor to manage complex routing decision
 These configurations can be saved as Traffic Flow Policy 
 this can be applied to different hosted zones  ( different domain names )
 and it supports versioning
-
-
-
 
 Health Checks:
 
@@ -184,15 +189,6 @@ III. CloudWatch metric with assigned CloudWatch Alarms:
 
 
     
-
-
-
-
-
-
-
-
-
 
 
 
