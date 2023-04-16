@@ -88,8 +88,103 @@ EC2 DNS name cannot be a target to a ALIAS record
 Routing Policy
 
 I. SIMPLE 
+  
+  Route to single resource.
+  Multiple values can be specified in the same record.
+  No health checks.
+  Alais can be enabled only for 1 AWS resource. 
+
 II. WEIGHTED 
+
+  % of the request is routed to a specific resource.
+  Relative weight is assigned to each record:
+          traffic (%) =    weight for a specific record 
+                        ___________________________________
+                         Sum of all weights for all records
+  Weight dont need to sum up to 100.                      
+  can have health checks. 
+  DNS records must have same name and record type. 
+  Use case: can be used to test new version by sending small traffic to a given resource. 
+  If weight is 0 then no traffic is sent to the given record. 
+  If all weights are 0, then the traffic will be equally distributed.
+  
+  
 III. LATENCY
+  
+  Can do health checks (has a failover capability)
+  Latency is based on user and AWS regions
+  redirects to the resources closest to user
+  Use case: When latency for user is priority
+  mention region in the record details
+
+IV. FAILOVER 
+  There are 2 EC 2 isntances primary and secondary 
+  The Route 53 policy helps move traffic to the secondary instance when the primary one is deeemed           unhealthy.
+  There only can be one Primary and one Secondary 
+
+V. GEOLOCATION
+  It is different from Latency based
+  Routing is based on geo-location 
+  Can redirect user base on content and or country (if overlapping most precise location is selected)
+  A default location can be set for underfined traffic.
+  Health checks can be done 
+  Use case:  Restricted content distribution, website localization 
+   
+    
+    
+
+VI. MULTI-VALUE ANSWER
+VII. GEOPROXIMITY ( Using Route 53 traffic flow feature)
+
+
+
+
+Health Checks:
+
+Health checks are integrated with Cloud watch metrics - 
+
+I. Endpoint:
+   a.  15 global health checkers check the endpoint.
+   b. Healthy/Unhealthy threshold can be set.
+   c. Interval of 30 sec or 10 sec ($$$) can be set for Health checks to be done.
+   d. HTTP, HTTPS, TCP are supported.
+   e. > 18% health checker must report the end port to be healthy
+   f. You can also choose which locations you want the Route 53 to use
+   g. Health Checks pass only if it responds to 2xx and 3xx status code.
+   h. Health Checkers IP range must be configured to allow incoming requests.
+   
+II. Calculated Health Checks (Health checks to check other health checks):
+   a. Combine the results of multiple child health checks by parent health checks.
+   b. combination of AND OR or NOT can be used.
+   c. 256 child health checks can be monitored, and threshold to pass can be defined for the parent to           pass.
+   d. Use case: to carry out maintenance on website without causing all the health checks to fail
+
+III. CloudWatch metric with assigned CloudWatch Alarms:
+  a. Used to manitor Private resources (as private endpoints cant be accessed)
+  b. Create a Cloud watch metric and create a cloud watch alarms that is assigned into the Health checker
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
