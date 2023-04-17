@@ -1,5 +1,44 @@
 
+Route 53 
 
+53 is the traditional DNS port. 
+
+Highly available, scalable, fully managed and authoritative DNS (i.e. the customer can update the DNS records) 
+
+Route 53 is a domain registrar 
+
+Can check health of resources 
+
+AWS provides 100% availability SLA.
+(The availability SLA is a contract between a service provider and their end-user that defines the expected level of application/database uptime and accessibility a vendor is to ensure and outlines the penalties involved (usually financial) if the agreed-upon service levels are not met.) 
+
+Can help route traffic for a domain by reacting records 
+
+Each record contains: 
+
+Domain / subdomain name - example.com
+Record type- A / AAAA / CNAME / NS
+Value - xx.xx.xx.xx
+Routing policy - how to route / reposnse to quieres
+TTL - time to live  ( amt of time the record is cached at the DNS resolvers).
+
+
+Record types: 
+
+A - maps a host name to IPv4
+AAAA - maps a host name to IPv6
+CNAME - maps a host name to another host name.
+NS - name servers for the hosted zone (control how traffic is routed for a domain)
+
+
+Hosted Zones 
+
+A directory of records and how to navigate traffic to a domain and uts subdomain. 
+
+Public hosted zone - contains records to route public domain names 
+
+
+Private hosted zone - contains records to route private domain names (within one or more VPC)
 
 
 Registering a Domain:
