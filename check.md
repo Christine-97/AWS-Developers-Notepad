@@ -31,5 +31,47 @@
 	  <li>Public hosted zone - contains records to route public domain names. 🌐</li>
 	  <li>Private hosted zone - contains records to route private domain names (within one or more VPC). 🔒</li>
 	</ul>
+	
+<h3>📝 Registering a Domain:</h3>
+	
+<p><b>🔍 Navigate to the Route 53 </b></p>
+<p><b>	-> under Domains , click on registered domains </b></p>
+<p><b>	-> click on Register Domains</b></p>
+<img src="https://user-images.githubusercontent.com/26665659/233798301-a7df37b6-ddad-4db3-ae83-a81c238c4c4e.png">
+
+<p><b>🔍 Choose a domain name : </b></p>
+<img src="https://user-images.githubusercontent.com/26665659/233798246-f6f699a8-839a-43a2-9249-b256f5d006ef.png">
+
+<p><b>👥 Update contact details, remember to enable the privacy protection (Hides contact details to avoid unsolicited communication) :</b></p>
+<img src="https://user-images.githubusercontent.com/26665659/233798440-c98e9cad-8cc1-4b4a-9083-9cb152529536.png">
+
+<p><b>🔧 Enable / disable auto domain name renewal, accept terms and conditions :</b></p>
+<img src="https://user-images.githubusercontent.com/26665659/233798509-9a435ff1-e41f-416a-9bfa-cbe4aa9d99b7.png">
+
+<p><b>👉 Click on <img src="https://user-images.githubusercontent.com/26665659/233798880-a39ea5d8-1dd7-44ee-b717-1cae13fc5d4f.png"></b></p>
+
+<p><b>🔍 Once your domain name was registered, under Left-hand side menu, go to :  </b></p>
+<p><b>🏠 Hosted zone </b></p>
+<p><b>	 -> Check for Hosted zone Details</b></p>
+
+<p><b>📝 Your domain name should have 2 records  </b></p>
+<p><b>	-> NS - Server details that can provide value of the records added to the table, SOA</b></p>
+
+<p><b>🔍 Under hosted zones </b></p>
+<p><b>	-> domain names </b></p>
+<p><b>	-> click on create record : </b></p>
+<img src="https://user-images.githubusercontent.com/26665659/233798571-896bd91f-2cfb-4878-9be6-6326f5c7227b.png">
+
+<p><b>📝 Fill the Record details and click on create records -></b></p>
+<img src="https://user-images.githubusercontent.com/26665659/233798698-76495c99-f001-4f41-add9-7f425a792766.png">
+
+<p><b>🔍 CloudTrail commands to inquiry record details- </b></p>
+
+```
+sudo yum install -y bind-utils  // to install both nslookup and dig commmand
+nslookup  <recordname> // to get server and sddress details as well as non authoritative answers like name and address the url is redirected too
+dig <recordname> // provides additional details like TTL and Type of record
+```
+	
 </body>
 </html>
