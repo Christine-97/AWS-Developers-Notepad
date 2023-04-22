@@ -72,6 +72,36 @@ sudo yum install -y bind-utils  // to install both nslookup and dig commmand
 nslookup  <recordname> // to get server and sddress details as well as non authoritative answers like name and address the url is redirected too
 dig <recordname> // provides additional details like TTL and Type of record
 ```
+
+	
+<div>
+    <p>🤔 What is a record TTL?</p>
+    <p>🔍 Once the client makes a DNS request for a given hostname, the client will have to query the DNS system for a given TTL (<span>⏰</span> TIME TO LIVE - i.e. duration), as the answer has been cached for accessing the same hostname.</p>
+    <p>👉 High TTL</p>
+    <ul>
+        <li>1 Less traffic on Route 53</li>
+        <li>2 Possibly outdated records</li>
+    </ul>
+    <p>👉 Low TTL</p>
+    <ul>
+        <li>1 More traffic on Route 53, increase in cost ($$)</li>
+        <li>2 Records are outdated for a short time</li>
+        <li>3 Easy to change the record name as it is cached for a short time in the client system.</li>
+    </ul>
+    <p>🔐 TTL is mandated for each DNS record, except Alias records.</p>
+    <p>🚀 AWS Resources exposes AWS hostnames via load balancers, CloudFront etc</p>
+    <p>🔗 CNAME</p>
+    <p>CNAME allows you to point one hostname to another hostname ( only for non-root domains )</p>
+    <p>🎯 ALIAS</p>
+    <p>ALIAS allows you to point one hostname to AWS resources ( Both root domain and non-root domain ) 🆓 Free of charge 🏥 Can do a health check on resources</p>
+    <p>🌐 It can be used for (Zone apex) the top node of the DNS namespace</p>
+    <p>📝 Record name type A/AAAA is used for AWS resources (IPv4/IPv6)</p>
+    <p>👨‍💼 Route 53 will set TTL.</p>
+    <p>👎 EC2 DNS names cannot be targeted for ALIAS records</p>
+    <p>🚦 Routing Policy</p>
+</div>
+	
+	
 	
 </body>
 </html>
