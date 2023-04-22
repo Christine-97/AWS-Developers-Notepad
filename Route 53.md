@@ -169,6 +169,7 @@ It is not a substitute for ELB (client-side load balancing). 🚫</p>
 
 <h1>Additional information:</h1>	
 <p>🤔 What is a record TTL?</p>
+<ul>	
 <p>🔍 Once the client makes a DNS request for a given hostname, the client will have to query the DNS system for a given TTL (<span>⏰</span> TIME TO LIVE - i.e. duration), as the answer has been cached for accessing the same hostname.</p>
 <p>👉 High TTL</p>
 <ul>
@@ -183,16 +184,20 @@ It is not a substitute for ELB (client-side load balancing). 🚫</p>
 </ul>
 <p>🔐 TTL is mandated for each DNS record, except Alias records.</p>
 <p>🚀 AWS Resources exposes AWS hostnames via load balancers, CloudFront etc</p>
+</ul>	
 <p>🔗 CNAME</p>
+<ul>	
 <p>CNAME allows you to point one hostname to another hostname ( only for non-root domains )</p>
+</ul>
 <p>🎯 ALIAS</p>
+<ul>	
 <p>ALIAS allows you to point one hostname to AWS resources ( Both root domain and non-root domain ) 🆓 Free of charge 🏥 Can do a health check on resources</p>
 <p>🌐 It can be used for (Zone apex) the top node of the DNS namespace</p>
 <p>📝 Record name type A/AAAA is used for AWS resources (IPv4/IPv6)</p>
 <p>👨‍💼 Route 53 will set TTL.</p>
 <p>👎 EC2 DNS names cannot be targeted for ALIAS records</p>
 <p>🚦 Routing Policy</p>
-	
+</ul>	
 	
 </body>
 </html>
