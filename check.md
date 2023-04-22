@@ -74,34 +74,98 @@ dig <recordname> // provides additional details like TTL and Type of record
 ```
 
 	
-<div>
-    <p>🤔 What is a record TTL?</p>
-    <p>🔍 Once the client makes a DNS request for a given hostname, the client will have to query the DNS system for a given TTL (<span>⏰</span> TIME TO LIVE - i.e. duration), as the answer has been cached for accessing the same hostname.</p>
-    <p>👉 High TTL</p>
-    <ul>
-        <li>1 Less traffic on Route 53</li>
-        <li>2 Possibly outdated records</li>
-    </ul>
-    <p>👉 Low TTL</p>
-    <ul>
-        <li>1 More traffic on Route 53, increase in cost ($$)</li>
-        <li>2 Records are outdated for a short time</li>
-        <li>3 Easy to change the record name as it is cached for a short time in the client system.</li>
-    </ul>
-    <p>🔐 TTL is mandated for each DNS record, except Alias records.</p>
-    <p>🚀 AWS Resources exposes AWS hostnames via load balancers, CloudFront etc</p>
-    <p>🔗 CNAME</p>
-    <p>CNAME allows you to point one hostname to another hostname ( only for non-root domains )</p>
-    <p>🎯 ALIAS</p>
-    <p>ALIAS allows you to point one hostname to AWS resources ( Both root domain and non-root domain ) 🆓 Free of charge 🏥 Can do a health check on resources</p>
-    <p>🌐 It can be used for (Zone apex) the top node of the DNS namespace</p>
-    <p>📝 Record name type A/AAAA is used for AWS resources (IPv4/IPv6)</p>
-    <p>👨‍💼 Route 53 will set TTL.</p>
-    <p>👎 EC2 DNS names cannot be targeted for ALIAS records</p>
-    <p>🚦 Routing Policy</p>
-</div>
+
+<p>🤔 What is a record TTL?</p>
+<p>🔍 Once the client makes a DNS request for a given hostname, the client will have to query the DNS system for a given TTL (<span>⏰</span> TIME TO LIVE - i.e. duration), as the answer has been cached for accessing the same hostname.</p>
+<p>👉 High TTL</p>
+<ul>
+<li>1 Less traffic on Route 53</li>
+<li>2 Possibly outdated records</li>
+</ul>
+<p>👉 Low TTL</p>
+<ul>
+<li>1 More traffic on Route 53, increase in cost ($$)</li>
+<li>2 Records are outdated for a short time</li>
+<li>3 Easy to change the record name as it is cached for a short time in the client system.</li>
+</ul>
+<p>🔐 TTL is mandated for each DNS record, except Alias records.</p>
+<p>🚀 AWS Resources exposes AWS hostnames via load balancers, CloudFront etc</p>
+<p>🔗 CNAME</p>
+<p>CNAME allows you to point one hostname to another hostname ( only for non-root domains )</p>
+<p>🎯 ALIAS</p>
+<p>ALIAS allows you to point one hostname to AWS resources ( Both root domain and non-root domain ) 🆓 Free of charge 🏥 Can do a health check on resources</p>
+<p>🌐 It can be used for (Zone apex) the top node of the DNS namespace</p>
+<p>📝 Record name type A/AAAA is used for AWS resources (IPv4/IPv6)</p>
+<p>👨‍💼 Route 53 will set TTL.</p>
+<p>👎 EC2 DNS names cannot be targeted for ALIAS records</p>
+<p>🚦 Routing Policy</p>
+
+	
+<h1>Route 53 Routing Types</h1>
+
+
+<h1>I. SIMPLE 🛣️</h1>
+<p>Route to a single resource. 💾<br>
+	Multiple values can be specified in the same record. 📝<br>
+	No health checks. 🚫<br>
+	An alias can be enabled only for 1 AWS resource. 🆔</p>
+
+<h1>II. WEIGHTED ⚖️</h1>
+<p>% of the request is routed to a specific resource. 📈<br>
+Relative weights are assigned to each record: ⚖️<br><br>
+<code>Traffic (%) = weight for a specific record / Sum of all weights for all records</code><br><br>
+Weight doesn't need to sum up to 100. 🤝<br>
+Can have health checks. 🩺<br>
+DNS records must have the same name and record type. 📝<br>
+Use case: can be used to test updated versions by sending small traffic to a given resource. 🧪<br>
+If the weight is 0, no traffic is sent to the given record. 🚫<br>
+If all weights are 0, traffic will be equally distributed. ↔️</p>
+
+<h1>III. LATENCY ⏱️</h1>
+<p>Can do health checks (has failover capability). 🩺<br>
+	Latency is based on the user and AWS regions ⌛<br>
+	Redirects to the resources closest to the user. 🌎<br>
+	Use case: When latency for the user is a priority ⚠️<br>
+	Mention the region in the record details 📍</p>
+
+<h1>IV. FAILOVER ☠️</h1>
+<p>There are 2 EC2 instances primary and secondary 🎭<br>
+	The Route 53 policy helps move traffic to the second instance when the primary one is deemed unhealthy. 🚨<br>
+	There can only be one primary and one secondary. 1️⃣ 2️⃣</p>
+
+<h1>V. GEOLOCATION 🌍</h1>
+<p>It is different from latency-based. ⏱️<br>
+	Routing is based on geolocation 📍<br>
+	Can redirect users based on content and/or country (if it overlaps, the most precise location is selected) 🌐<br>
+	Default locations can be set for undefined traffic. 📊<br>
+	Health checks can be done. 🩺<br>
+	Use case: Restricted content distribution, website localization 🌐</p>
+
+<h1>VI. MULTI-VALUE 🔀</h1>
+<p>Route traffic to multiple resources. 🔀<br>
+	Route 53 returns multiple values/resources. 🔝<br>
+	Health checks return only healthy resources as values. 🩺<br>
+	You can return up to 8 health check records for each multi-value query. 8️⃣<br>
+	It is not a substitute for ELB (client-side load balancing). 🚫</p>
 	
 	
+<h3>VII. GEOPROXIMITY (Using Route 53 traffic flow feature) 🌎</h3>
+<p>Allows you to route traffic to your resources based on the user's location and the resources 🌍</p>
+<p>There is a number called bias, used to shift traffic to resources based on a specific location. 📍</p>
+<p>To change the geographic region size, you can specify bias values: 🧭</p>
+<ul>
+    <li>Expand (1 to 99) - more traffic to the resource 🔝</li>
+    <li>Shrink (-1 to -99) - less traffic to the resource 🔽</li>
+</ul>
+<p>Resources can be own resources (on-premises) hence the latitude and longitude must be specified 📍</p>
+<p>For AWS resources, a region must be specified. 🌍</p>
+<p>Use case: To shift traffic from one region to another. 🛣️</p>
+
+
+<h3>VIII. IP-based 🖥️</h3>
+<p>Routing is based on clients' IP addresses 📶</p>
+<p>User-IP-to-endpoint mappings - a list of CIDRs for your clients and the corresponding endpoints/locations are mapped. 🗺️</p>
+<p>Use cases: Optimized performance, reduced network costs 💸</p>
 	
 </body>
 </html>
