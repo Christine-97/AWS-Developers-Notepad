@@ -130,7 +130,7 @@ It is not a substitute for ELB (client-side load balancing). 🚫</p>
 <p>For AWS resources, a region must be specified. 🌍</p>
 <p>Use case: To shift traffic from one region to another. 🛣️</p>
 
-<h2>Features</h2>
+<h1>Features</h1>
 <p>Traffic flow 🚦:</p>
 <ul>
 <li>It simplifies the process of creating and maintaining records in large and complex configurations 🧐</li>
