@@ -32,7 +32,7 @@
   <li>Private hosted zone - contains records to route private domain names (within one or more VPC). 🔒</li>
 </ul>
 	
-<h3>📝 Registering a Domain:</h3>
+<h1>📝 Registering a Domain:</h1>
 	
 <p><b>🔍 Navigate to the Route 53 </b></p>
 <p><b>	-> under Domains , click on registered domains </b></p>
@@ -99,7 +99,7 @@ dig <recordname> // provides additional details like TTL and Type of record
 <p>🚦 Routing Policy</p>
 
 	
-<h2>Route 53 Routing Types</h2>
+<h1>Route 53 Routing Types</h1>
 <h3>I. SIMPLE 🛣️</h3>
 <p>Route to a single resource. 💾<br>
 Multiple values can be specified in the same record. 📝<br>
