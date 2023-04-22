@@ -44,20 +44,21 @@ Private hosted zone - contains records to route private domain names (within one
 Registering a Domain:
 
 Navigate to the Route 53 -> under Domains , click on registered domains -> click on Register Domains
-![image](https://user-images.githubusercontent.com/26665659/232305446-23f14bd2-a562-4fe4-b597-abeb9751c138.png)
+![image](https://user-images.githubusercontent.com/26665659/233798301-a7df37b6-ddad-4db3-ae83-a81c238c4c4e.png)
 
-choose a domain name - >
+choose a domain name - ></br>
+![image](https://user-images.githubusercontent.com/26665659/233798246-f6f699a8-839a-43a2-9249-b256f5d006ef.png)
 
-![image](https://user-images.githubusercontent.com/26665659/232305468-767f6d27-e23a-457b-b575-7aa6d138dbed.png)
+Update contact details, remember to enable the privacy protetion (to hide contact details from unsolicited communication) 
 
-Update contact details, remember to enable the privacy protetion (to hide contact details) 
-
-![image](https://user-images.githubusercontent.com/26665659/232309382-71e7c3b9-48ba-4e82-82e3-6c5f48ceb200.png)
-
+![image](https://user-images.githubusercontent.com/26665659/233798440-c98e9cad-8cc1-4b4a-9083-9cb152529536.png)
 
 Enable / disable auto domain name renewal, accept terms and conditions
+![image](https://user-images.githubusercontent.com/26665659/233798509-9a435ff1-e41f-416a-9bfa-cbe4aa9d99b7.png)
 
-click on complete order ![image](https://user-images.githubusercontent.com/26665659/232309346-f82b5b32-d44c-4e1e-b7c6-74e0cb45fe6f.png)
+
+Click on ![image](https://user-images.githubusercontent.com/26665659/233798880-a39ea5d8-1dd7-44ee-b717-1cae13fc5d4f.png)
+
 
 Once your domain name was registered, under Left hand side menu, go to - 
 
@@ -68,11 +69,11 @@ your domain name should have 2 records -> NS - Server details that can provide v
 
 Under hostedzones -> domain names -> click on create record ->
 
-![image](https://user-images.githubusercontent.com/26665659/232309452-05775b2f-aa5c-4f60-8a1a-603d26c6886a.png)
+![image](https://user-images.githubusercontent.com/26665659/233798571-896bd91f-2cfb-4878-9be6-6326f5c7227b.png)
 
 Fill the Record details and click on create records ->
 
-![image](https://user-images.githubusercontent.com/26665659/232309442-b2510295-1696-4cfb-819f-a76d575af67f.png)
+![image](https://user-images.githubusercontent.com/26665659/233798698-76495c99-f001-4f41-add9-7f425a792766.png)
 
 
 CloudTrail commands to inqury record details- 
