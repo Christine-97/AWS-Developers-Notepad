@@ -191,7 +191,9 @@ It is not a substitute for ELB (client-side load balancing). 🚫</p>
 </ul>
 <p>🎯 ALIAS</p>
 <ul>	
-<p>ALIAS allows you to point one hostname to AWS resources ( Both root domain and non-root domain ) 🆓 Free of charge 🏥 Can do a health check on resources</p>
+<p>ALIAS allows you to point one hostname to AWS resources ( Both root domain and non-root domain ) 🆓 </p>
+<p>Free of charge 🏥 </p>
+<p>Can do a health check on resources</p>
 <p>🌐 It can be used for (Zone apex) the top node of the DNS namespace</p>
 <p>📝 Record name type A/AAAA is used for AWS resources (IPv4/IPv6)</p>
 <p>👨‍💼 Route 53 will set TTL.</p>
