@@ -205,23 +205,62 @@ The bucket access is now set to public : (with warning sign)
 
 ![image](https://user-images.githubusercontent.com/26665659/236637468-b4131e72-5ed6-49ef-aaac-bb246236de8b.png)
 
-
-now all you files will be policy !
-
+now all your files will be public!
 
 
 
+Amazon S3 - Static Website Hosting
+
+• S3 can host static websites and have them accessible on the Internet
+
+The website URL will be (depending on the region)
+  • http://bucket-name.s3-website-aws-region.amazonaws.com
+OR
+  • http://bucket-name.s3-website.aws-region.amazonaws.com
+  
+● If you get a 403 Forbidden error, make sure the bucket policy allows public reads!
+
+
+
+How to host a static website on S3?
+
+Under Properties tab, under your bucket:
+![image](https://user-images.githubusercontent.com/26665659/236638222-c831d0b6-89ec-4fa7-aa98-379fcfaddf69.png)
+
+Enable Static website hosting:
+![image](https://user-images.githubusercontent.com/26665659/236638232-2589c7df-7ec6-4c9d-9fc3-78b9e11be4d7.png)
+
+Please save " index.html" as the name of your home page html file before adding it to your S3 bucket:
+![image](https://user-images.githubusercontent.com/26665659/236638307-114c0425-1ea8-470f-bfaa-f5751ce0f44a.png)
+
+
+Under Properties, you can find the link to your site :
+
+![image](https://user-images.githubusercontent.com/26665659/236638508-29e7d2de-ee00-485c-a5ce-d1ddedc7bcb5.png)
+
+
+Please note: 
+
+For your customers to access content at the website endpoint, you must make all your content publicly readable. To do so, you can edit the S3 Block Public Access settings for the bucket. 
 
 
 
 
+------------------------------------
 
+Amazon S3 - Versioning
 
+● You can version your files in Amazon S3
+● It is enabled at the bucket level
 
+● Same key overwrite will change the "version": 1, 2, 3....
+  • It is best practice to version your buckets
+  • Protect against unintended deletes (ability to restore a version)
+  • Easy roll back to previous version
 
-
-
-
+● Notes:
+  1. Any file that is not versioned prior to enabling versioning will have version "null"
+  2. Suspending versioning does not delete the previous versions
 
 
 
