@@ -243,9 +243,6 @@ Please note:
 
 For your customers to access content at the website endpoint, you must make all your content publicly readable. To do so, you can edit the S3 Block Public Access settings for the bucket. 
 
-
-
-
 ------------------------------------
 
 Amazon S3 - Versioning
@@ -341,6 +338,54 @@ Please note:
 • There is no "chaining" of replication
   1. If bucket 1 has replication into bucket 2, which has replication into bucket 3 
   2. Then objects created in bucket 1 are not replicated to bucket 3
+
+
+How to setup replication?
+
+First of all, Create a new bucket and enable versioning.
+
+On the origin bucket, under "management" tab, 
+
+![image](https://user-images.githubusercontent.com/26665659/236668513-7ecd8ca8-84b4-4777-a185-e91a8da0cf5e.png)
+
+Scroll down to "Replication rules", and click on /"![image](https://user-images.githubusercontent.com/26665659/236668540-a3c9bd4a-75bb-420e-8dee-56d6e223858e.png)"/
+
+![image](https://user-images.githubusercontent.com/26665659/236668532-cbc52c71-b846-4583-af8a-c5cc8c69999f.png)
+
+Create replication rule:
+![image](https://user-images.githubusercontent.com/26665659/236668577-22a5f828-d0e4-4c04-a90c-f5452058c7fa.png)
+
+
+Under Source bucket: 
+Choose a rule scope : Apply to all objects in the bucket
+
+under Destination: (you can choose from same or different account)
+
+![image](https://user-images.githubusercontent.com/26665659/236668680-0c34eec6-1aa0-4670-8246-fb4b64a417a7.png)
+
+under IAM role:
+
+![image](https://user-images.githubusercontent.com/26665659/236668793-d3a0bbee-8f54-4160-9f9e-f5745e76c34a.png)
+
+SAVE!
+
+It gives a pop-up asking to replicate existing objects.
+  Yes: would create a  one-time Batch Operations job from this replication configuration to replicate objects that already exist in the bucket and to synchronize the source and destination buckets
+  No: will not replicate existing files.
+  
+![image](https://user-images.githubusercontent.com/26665659/236668818-56c80edb-a71a-4a14-8555-bda82c8ff4cb.png)
+
+Once you add a new object to the origin bucket it will reflect on the destination bucket.
+
+The version ID for the given object will be the same in both buckets.
+
+If you edit the rule to replicate delete markers, it will replicate the same, however, it won't replicate a permanent delete.
+
+![image](https://user-images.githubusercontent.com/26665659/236669258-5a442acf-fbd6-40cc-8960-a947315c907a.png)
+
+Under Additional replication options:
+
+![image](https://user-images.githubusercontent.com/26665659/236669281-f8f0693e-21e9-487d-b856-f315654f65e0.png)
 
 ----------------------------------------------
 Storage class
