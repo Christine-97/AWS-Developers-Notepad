@@ -262,23 +262,87 @@ Amazon S3 - Versioning
   1. Any file that is not versioned prior to enabling versioning will have version "null"
   2. Suspending versioning does not delete the previous versions
 
+How to enable versioning in S3 ? 
+
+Once you are in your selected bucket, under "Properties" tab,edit bucket versioning.
+
+![image](https://user-images.githubusercontent.com/26665659/236663707-aa0f2dd8-b012-46f0-982e-a0482fa240ad.png)
+
+Enable ! 
+![image](https://user-images.githubusercontent.com/26665659/236663722-1b9e774d-d28f-422c-bbd6-63a6512c5a32.png)
+
+and save changes.
+
+To create a version of an existing fie , simply upload the edited copy to your bucket with the same name.
+
+To view the versions of a particular object, 
+
+click on the object, under the version's tab you can view the different versions available:
+
+![image](https://user-images.githubusercontent.com/26665659/236664007-db32b8c1-447a-4e5c-aea7-c7afd2bed3ca.png)
 
 
+you can also see all the version by using ![image](https://user-images.githubusercontent.com/26665659/236664119-a3e59fcd-a7aa-490f-8635-a46a62040ea5.png) toggle.
+
+![image](https://user-images.githubusercontent.com/26665659/236664137-a3339029-ca5a-4e04-95ec-ca8eca1d94ba.png)
+
+Version ID will be "null" for objects uploaded before versioning was available.
+
+How to revert to the previous version?
+
+Ensure the "show versions" is enabled, select the version you want to delete and click on the delete button.
+![image](https://user-images.githubusercontent.com/26665659/236664316-f7750c84-26dd-443d-b198-5bb15c80477d.png)
+
+![image](https://user-images.githubusercontent.com/26665659/236664370-f02bfff1-fc1e-47ed-ab47-830b73311531.png)
 
 
+However, deleting an object with a "null" ID adds a delete marker against it and can be recovered.
+
+![image](https://user-images.githubusercontent.com/26665659/236664450-f2970cfa-2b13-40db-9047-a24475b04919.png)
+
+![image](https://user-images.githubusercontent.com/26665659/236664486-35c82077-ecf7-44e5-9f5b-401a79e99362.png)
+
+How to restore an object with a delete marker ?
+
+select the object you want to restore, and click on "delete" 
+
+![image](https://user-images.githubusercontent.com/26665659/236666542-864a3390-f425-4172-b207-e0b6a1f82c42.png)
 
 
+![image](https://user-images.githubusercontent.com/26665659/236666623-fcbaf652-effb-401d-b37a-56914e864b20.png)
+
+and you will have you object restored.
+![image](https://user-images.githubusercontent.com/26665659/236666635-d1a5da5a-f39b-4b29-b40a-23b706ce7a38.png)
 
 
+AWS S3 - Replication
 
+• Versioning must be enabled in source and destination buckets
+• Types of replication:
+  • Cross-Region Replication (CRR)
+  • Same-Region Replication (SRR)
 
+• Copying is asynchronous
+• Buckets can be in different AWS accounts
+• Proper IAM permissions must given to S3
 
+● Use cases:
+  ● CRR - compliance, lower latency access, replication across accounts 
+  ● SRR - log aggregation, live replication between production and test accounts
 
+Please note:
+• After you enable Replication, only new objects are replicated into the S3 bucket.
+• You can replicate existing objects using S3 Batch Replication       * Replicates existing objects and objects that failed replication
 
+• For DELETE operations
+  1. Can replicate delete markers from source to target (optional setting)
+  2. Deletions with a version ID are not replicated (to avoid malicious deletes)
+  
+• There is no "chaining" of replication
+  1. If bucket 1 has replication into bucket 2, which has replication into bucket 3 
+  2. Then objects created in bucket 1 are not replicated to bucket 3
 
-
-
-
+----------------------------------------------
 Storage class
 Amazon S3 offers a range of storage classes designed for different use cases.
 
